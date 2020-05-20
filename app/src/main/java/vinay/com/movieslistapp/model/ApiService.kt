@@ -1,0 +1,24 @@
+package vinay.com.movieslistapp.model
+
+import io.reactivex.Single
+import vinay.com.vinaydemoproject.di.DaggerApiComponent
+import javax.inject.Inject
+
+class ApiService {
+
+    @Inject
+    lateinit var api : ApiInterface
+
+    init{
+        DaggerApiComponent.create().inject(this)
+    }
+
+    fun getApiKey(): Single<Object> {
+        return api.getApiKey()
+    }
+
+    fun getMovies(key: String): Single<List<Object>> {
+        return api.getMovies(key)
+    }
+
+}
