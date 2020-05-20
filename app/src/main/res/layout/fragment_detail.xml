@@ -6,19 +6,5 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Detail Fragment" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/buttonList"
-        android:layout_width="378dp"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_list_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
