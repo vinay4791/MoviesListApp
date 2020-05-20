@@ -50,6 +50,7 @@ dependencies {
     implementation "com.android.support:design:$supportVerion"
 
     implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
 
 
