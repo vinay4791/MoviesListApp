@@ -27,7 +27,6 @@ class ApiModule {
                 }).build()
     }
 
-
     @Provides
     fun provideAnimalApi(okHttpClient: OkHttpClient): ApiInterface {
         return Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build().create(ApiInterface::class.java)

@@ -17,8 +17,8 @@ class ApiService {
         return api.getApiKey()
     }
 
-    fun getMovies(key: String): Single<List<Object>> {
-        return api.getMovies(key)
+    fun getMovies(): Single<Data> {
+        return api.getMovies()
     }
 
 }

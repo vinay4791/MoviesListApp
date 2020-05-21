@@ -5,7 +5,7 @@ import vinay.com.movieslistapp.viewmodel.ListViewModel
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ApiModule::class, PrefsModule::class, AppModule::class])
+@Component(modules = [ApiModule::class,  AppModule::class])
 interface ViewModelComponent {
     fun inject(viewModel: ListViewModel)
 }

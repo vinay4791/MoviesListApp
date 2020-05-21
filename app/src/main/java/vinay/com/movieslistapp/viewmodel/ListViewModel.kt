@@ -7,8 +7,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import vinay.com.movieslistapp.model.ApiKey
 import vinay.com.movieslistapp.model.ApiService
+import vinay.com.movieslistapp.model.Data
 import vinay.com.vinaydemoproject.di.AppModule
 import vinay.com.vinaydemoproject.di.DaggerViewModelComponent
 import javax.inject.Inject
@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val disposable = CompositeDisposable()
-    val apiKey by lazy { MutableLiveData<ApiKey>() }
+    val data by lazy { MutableLiveData<Data>() }
 
     @Inject
     lateinit var apiService: ApiService
@@ -30,12 +30,12 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getData() {
         disposable.add(
-                apiService.getApiKey()
+                apiService.getMovies()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(object : DisposableSingleObserver<ApiKey>() {
-                            override fun onSuccess(dataList: ApiKey) {
-                                apiKey.postValue(dataList)
+                        .subscribeWith(object : DisposableSingleObserver<Data>() {
+                            override fun onSuccess(dataList: Data) {
+                                data.postValue(dataList)
                             }
 
                             override fun onError(e: Throwable) {
