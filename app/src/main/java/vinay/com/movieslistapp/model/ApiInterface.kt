@@ -8,10 +8,6 @@ import retrofit2.http.POST
 
 interface ApiInterface {
 
-    @GET("authentication/token/new?api_key=6302547a96c85ce957a1b35104e9d5bc")
-    fun getApiKey(): Single<ApiKey>
-
-    @GET("movie/now_playing?api_key=6302547a96c85ce957a1b35104e9d5bc&language=en-US&page=1 ")
+    @GET("movie/now_playing?api_key=6302547a96c85ce957a1b35104e9d5bc&language=en-US&page=1")
     fun getMovies() : Single<Data>
-
 }

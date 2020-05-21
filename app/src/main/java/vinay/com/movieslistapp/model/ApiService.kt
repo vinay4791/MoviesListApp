@@ -5,7 +5,6 @@ import vinay.com.vinaydemoproject.di.DaggerApiComponent
 import javax.inject.Inject
 
 class ApiService {
-
     @Inject
     lateinit var api : ApiInterface
 
@@ -13,12 +12,7 @@ class ApiService {
         DaggerApiComponent.create().inject(this)
     }
 
-    fun getApiKey(): Single<ApiKey> {
-        return api.getApiKey()
-    }
-
     fun getMovies(): Single<Data> {
         return api.getMovies()
     }
-
 }

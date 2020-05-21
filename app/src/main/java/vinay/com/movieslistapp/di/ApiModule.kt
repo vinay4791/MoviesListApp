@@ -11,7 +11,6 @@ import vinay.com.movieslistapp.model.ApiInterface
 import vinay.com.movieslistapp.model.ApiService
 import java.util.concurrent.TimeUnit
 
-
 @Module
 class ApiModule {
 
@@ -36,4 +35,6 @@ class ApiModule {
     fun provideAnimalApiService(): ApiService {
         return ApiService()
     }
+
+   // https://image.tmdb.org/t/p/w780/ocUrMYbdjknu2TwzMHKT9PBBQRw.jpg
 }
