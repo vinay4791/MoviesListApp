@@ -9,15 +9,19 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import vinay.com.movieslistapp.model.ApiInterface
 import vinay.com.movieslistapp.model.ApiService
+import java.util.concurrent.TimeUnit
+
 
 @Module
 class ApiModule {
 
-    private val BASE_URL = "https://www.themoviedb.org/3/"
+    private val BASE_URL = "https://api.themoviedb.org/3/"
 
     @Provides
     fun provideOkHTTPClient(): OkHttpClient {
-        return OkHttpClient.Builder()
+        return OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(100, TimeUnit.SECONDS)
+                .writeTimeout(100, TimeUnit.SECONDS)
                 .addInterceptor(HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BODY
                 }).build()
@@ -26,12 +30,7 @@ class ApiModule {
 
     @Provides
     fun provideAnimalApi(okHttpClient: OkHttpClient): ApiInterface {
-        return Retrofit.Builder().baseUrl(BASE_URL).
-                client(okHttpClient).
-                addConverterFactory(GsonConverterFactory.create()).
-                addCallAdapterFactory(RxJava2CallAdapterFactory.
-                        create()).
-                build().create(ApiInterface::class.java)
+        return Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build().create(ApiInterface::class.java)
     }
 
     @Provides

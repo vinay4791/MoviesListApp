@@ -28,5 +28,6 @@ class ListFragment : Fragment() {
 
     fun initialize() {
         listViewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
+        listViewModel.getData()
     }
 }

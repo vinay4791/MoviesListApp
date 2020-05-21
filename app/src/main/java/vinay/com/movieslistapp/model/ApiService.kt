@@ -13,7 +13,7 @@ class ApiService {
         DaggerApiComponent.create().inject(this)
     }
 
-    fun getApiKey(): Single<Object> {
+    fun getApiKey(): Single<ApiKey> {
         return api.getApiKey()
     }
 
