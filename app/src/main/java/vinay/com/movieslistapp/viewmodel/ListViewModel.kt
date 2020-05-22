@@ -7,13 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.schedulers.Schedulers
 import vinay.com.movieslistapp.model.*
-import vinay.com.movieslistapp.util.Constants.Companion.API_KEY
-import vinay.com.movieslistapp.util.Constants.Companion.DEFAULT_LANGUAGE
 import vinay.com.movieslistapp.util.State
 import vinay.com.vinaydemoproject.di.AppModule
 import vinay.com.vinaydemoproject.di.DaggerViewModelComponent
@@ -60,5 +55,4 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         super.onCleared()
         compositeDisposable.dispose()
     }
-
 }

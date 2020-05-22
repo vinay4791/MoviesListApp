@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import vinay.com.movieslistapp.model.Results
 
 @Database(entities = arrayOf(Results::class), version = 1, exportSchema = false)
