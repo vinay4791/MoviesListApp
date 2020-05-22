@@ -12,7 +12,7 @@ class ApiService {
         DaggerApiComponent.create().inject(this)
     }
 
-    fun getMovies(api_key: String, language: String, page: String): Single<Data> {
+    fun getMovies(api_key: String, language: String, page: Int): Single<Data> {
         return api.getMovies(api_key, language, page)
     }
 }

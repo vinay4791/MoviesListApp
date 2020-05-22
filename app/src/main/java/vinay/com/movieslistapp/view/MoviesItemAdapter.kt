@@ -1,6 +1,7 @@
 package vinay.com.movieslistapp.view
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
@@ -10,15 +11,26 @@ import androidx.recyclerview.widget.RecyclerView
 import vinay.com.movieslistapp.R
 import vinay.com.movieslistapp.databinding.MoviesItemBinding
 import vinay.com.movieslistapp.model.Results
+import vinay.com.movieslistapp.util.State
 
-class MoviesItemAdapter : PagedListAdapter<Results, MoviesItemAdapter.MoviesViewHolder>(MoviesDiffCallback) {
+class MoviesItemAdapter(private val retry: () -> Unit) : PagedListAdapter<Results, RecyclerView.ViewHolder>(MoviesDiffCallback) {
 
-    class MoviesViewHolder(var view: MoviesItemBinding) : RecyclerView.ViewHolder(view.root)
+    private var state = State.LOADING
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+    private val DATA_VIEW_TYPE = 0
+    private val FOOTER_VIEW_TYPE = 2
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<MoviesItemBinding>(layoutInflater, R.layout.movies_item,parent,false)
-        return MoviesViewHolder(view)
+        val view = DataBindingUtil.inflate<MoviesItemBinding>(layoutInflater, R.layout.movies_item, parent, false)
+
+        return if (viewType == DATA_VIEW_TYPE) {
+            MoviesViewHolder(view)
+        }  else{
+            ListFooterViewHolder.create(retry, parent)
+        }
+
+
     }
 
     companion object {
@@ -33,11 +45,28 @@ class MoviesItemAdapter : PagedListAdapter<Results, MoviesItemAdapter.MoviesView
         }
     }
 
-    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        /*holder.view.movie = data.results[position]
-        holder.view.movieLayout.setOnClickListener {
-            val action = ListFragmentDirections.actionDetail(data.results[position])
-            Navigation.findNavController(holder.view.movieLayout).navigate(action)
-        }*/
+    override fun getItemCount(): Int {
+        return super.getItemCount() + if (hasFooter()) 1 else 0
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position < super.getItemCount()) DATA_VIEW_TYPE else FOOTER_VIEW_TYPE
+    }
+
+    private fun hasFooter(): Boolean {
+        return super.getItemCount() != 0 && (state == State.LOADING || state == State.ERROR)
+    }
+
+    fun setState(state: State) {
+        this.state = state
+        notifyItemChanged(super.getItemCount())
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (getItemViewType(position) == DATA_VIEW_TYPE){
+            (holder as MoviesViewHolder).bind(getItem(position))
+        }else{
+             (holder as ListFooterViewHolder).bind(state)
+        }
     }
 }

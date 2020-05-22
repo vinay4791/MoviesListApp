@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.ListFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/moviesList"
         android:layout_width="0dp"
@@ -35,7 +36,7 @@
         app:layout_constraintTop_toTopOf="@+id/moviesList" />
 
     <ProgressBar
-        android:id="@+id/loading"
+        android:id="@+id/list_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"

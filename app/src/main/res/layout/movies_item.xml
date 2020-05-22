@@ -27,7 +27,7 @@
             android:id="@+id/movies_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:imageUrl="@{movie.backdrop_path}"
+            android:imageUrl='@{movie.backdrop_path != null ? movie.backdrop_path : @string/hello_blank_fragment}'
             android:scaleType="fitXY" />
 
         <View
