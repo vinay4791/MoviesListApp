@@ -23,6 +23,7 @@
             android:layout_gravity="left"
             android:layout_marginLeft="@dimen/back_arrow_margin"
             android:layout_marginTop="@dimen/back_arrow_margin"
+            android:scaleType="fitXY"
             android:background="@drawable/circular_background"
             android:src="@drawable/ic_arrow_back_white_24dp" />
 

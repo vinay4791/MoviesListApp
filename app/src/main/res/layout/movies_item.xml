@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:imageUrl="@{movie.backdrop_path}"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="match_parent"

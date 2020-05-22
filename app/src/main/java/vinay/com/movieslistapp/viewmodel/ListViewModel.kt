@@ -19,9 +19,9 @@ import javax.inject.Inject
 
 class ListViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val disposable = CompositeDisposable()
     val data by lazy { MutableLiveData<Data>() }
     val resultData by lazy { MutableLiveData<PagedList<Results>>() }
+    private val compositeDisposable = CompositeDisposable()
 
     @Inject
     lateinit var apiService: ApiService
@@ -34,7 +34,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getData() {
-        disposable.add(
+        compositeDisposable.add(
                 apiService.getMovies(API_KEY, DEFAULT_LANGUAGE, "1")
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -49,6 +49,11 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
                             }
                         })
         )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
 
 }
