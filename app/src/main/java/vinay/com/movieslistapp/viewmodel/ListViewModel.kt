@@ -45,24 +45,6 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         resultData = LivePagedListBuilder<Int, Results>(moviesDataSourceFactory, config).build()
     }
 
-    fun getData() {
-        compositeDisposable.add(
-                apiService.getMovies(API_KEY, DEFAULT_LANGUAGE, 1)
-                        .subscribeOn(Schedulers.newThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(object : DisposableSingleObserver<Data>() {
-                            override fun onSuccess(dataList: Data) {
-                                data.postValue(dataList)
-                                //     resultData.postValue(dataList.results as PagedList<Results>?)
-                            }
-
-                            override fun onError(e: Throwable) {
-                                e.printStackTrace()
-                            }
-                        })
-        )
-    }
-
     fun getState(): LiveData<State> = Transformations.switchMap<MoviesDataSource,
             State>(moviesDataSourceFactory.newsDataSourceLiveData, MoviesDataSource::state)
 

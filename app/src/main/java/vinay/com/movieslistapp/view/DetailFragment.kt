@@ -28,11 +28,6 @@ class DetailFragment : Fragment() {
         arguments?.let {
             movie = DetailFragmentArgs.fromBundle(it).movieDetail
         }
-
-        /*animal?.imageUrl?.let {
-            setupBackgroundColor(it)
-        }*/
-
         dataBinding.movie = movie
     }
 }

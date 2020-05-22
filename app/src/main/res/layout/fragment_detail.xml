@@ -7,32 +7,19 @@
         <variable
             name="movie"
             type="vinay.com.movieslistapp.model.Results" />
-        <!-- <variable
-             name="pallette"
-             type="vinay.com.vinaydemoproject.model.AnimalPalette" />-->
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/back_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="@dimen/back_arrow_margin"
-            android:layout_marginTop="@dimen/back_arrow_margin"
-            android:scaleType="fitXY"
-            android:background="@drawable/circular_background"
-            android:src="@drawable/ic_arrow_back_white_24dp" />
 
         <ImageView
             android:id="@+id/news_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:src="@drawable/ic_launcher_background"
-            android:imageUrl="@{movie.poster_path}"
+            android:imageUrl='@{movie.poster_path != null ? movie.poster_path : @string/null_url_blank_string}'
             android:scaleType="fitCenter" />
 
         <View

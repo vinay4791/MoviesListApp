@@ -10,8 +10,8 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
         android:id="@+id/movieLayout"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -26,7 +26,7 @@
             android:id="@+id/movies_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:imageUrl='@{movie.backdrop_path != null ? movie.backdrop_path : @string/hello_blank_fragment}'
+            android:imageUrl='@{movie.backdrop_path != null ? movie.backdrop_path : @string/null_url_blank_string}'
             android:scaleType="fitXY" />
 
         <View

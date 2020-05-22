@@ -23,11 +23,6 @@ class ListFragment : Fragment() {
 
     private lateinit var listViewModel: ListViewModel
     private lateinit var moviesItemAdapter: MoviesItemAdapter
-    /*private val moviesDataObserver = Observer<Data> { list ->
-        list?.let {
-            processResponse(it)
-        }
-    }*/
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -42,9 +37,6 @@ class ListFragment : Fragment() {
 
     fun initialize() {
         listViewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
-
-        /*listViewModel.data.observe(this, moviesDataObserver)
-        listViewModel.getData()*/
 
         initAdapter()
         initState()
