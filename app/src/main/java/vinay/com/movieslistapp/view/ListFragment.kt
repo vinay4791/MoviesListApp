@@ -16,11 +16,9 @@ import vinay.com.movieslistapp.R
 import vinay.com.movieslistapp.model.Data
 import vinay.com.movieslistapp.viewmodel.ListViewModel
 
-class ListFragment : Fragment(), MovieListAdapter.OnMovieListAdapterItemClickListener {
+class ListFragment : Fragment() {
 
     private lateinit var listViewModel: ListViewModel
-
-    // private lateinit var movieListCustomAdapter: MovieListAdapter
     private val moviesDataObserver = Observer<Data> { list ->
         list?.let {
             processResponse(it)
@@ -53,11 +51,6 @@ class ListFragment : Fragment(), MovieListAdapter.OnMovieListAdapterItemClickLis
     fun processResponse(data: Data) {
         moviesList.layoutManager = LinearLayoutManager(activity)
         moviesList?.adapter =
-                activity?.let { MovieListAdapter(data, it, this) }
+                activity?.let { MovieListAdapter(data) }
     }
-
-    override fun onMovieListAdapterItemClick(title: String?) {
-
-    }
-
 }
