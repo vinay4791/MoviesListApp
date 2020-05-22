@@ -1,5 +1,6 @@
 package vinay.com.movieslistapp.model
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import io.reactivex.Completable
@@ -40,6 +41,7 @@ class MoviesDataSource(
 
     }
 
+    @SuppressLint("CheckResult")
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Results>) {
         updateState(State.LOADING)
         apiService.getMovies(API_KEY, DEFAULT_LANGUAGE,params.key)

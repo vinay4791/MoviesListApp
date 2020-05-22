@@ -34,6 +34,4 @@ class ApiModule {
     fun provideAnimalApiService(): ApiService {
         return ApiService()
     }
-
-   // https://image.tmdb.org/t/p/w780/ocUrMYbdjknu2TwzMHKT9PBBQRw.jpg
 }
