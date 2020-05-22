@@ -1,10 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.DetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="movie"
+            type="vinay.com.movieslistapp.model.Results" />
+        <!-- <variable
+             name="pallette"
+             type="vinay.com.vinaydemoproject.model.AnimalPalette" />-->
+    </data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/back_arrow_margin"
+            android:layout_marginTop="@dimen/back_arrow_margin"
+            android:background="@drawable/circular_background"
+            android:src="@drawable/ic_arrow_back_white_24dp" />
+
+        <ImageView
+            android:id="@+id/news_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:imageUrl="@{movie.backdrop_path}"
+            android:scaleType="fitCenter" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent_to_black_gradient" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/new_details_side_spacing"
+            android:layout_marginLeft="@dimen/new_details_side_spacing"
+            android:layout_marginEnd="@dimen/new_details_side_spacing"
+            android:layout_marginRight="@dimen/new_details_side_spacing"
+            android:layout_marginBottom="@dimen/new_details_side_spacing">
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{movie.overview}"
+                android:textColor="@color/movies_descrition_textcolor"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Description Text " />
+
+            <TextView
+                android:id="@+id/source_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@{movie.title}"
+                android:textColor="@color/movies_text_color"
+                android:textSize="@dimen/large_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/description_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="CNN" />
+
+            <TextView
+                android:id="@+id/date_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@{movie.release_date}"
+                android:textColor="@color/movies_text_color"
+                android:textSize="@dimen/large_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/description_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="2019-12-19" />
+
+            <TextView
+                android:id="@+id/movie_details_headline_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/new_details_headlines_bottom_spacing"
+                android:text="@{movie.title}"
+                android:textColor="@color/movies_title_white"
+                android:textSize="@dimen/extra_large_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/source_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Headlines" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>
