@@ -4,6 +4,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="null_url_blank_string">null_url_blank_string</string>
     <string name="null_string">Undefined</string>
-    <string name="tmdb_movies_txt">TMDB_Movies"</string>
+    <string name="tmdb_movies_txt">TMDB Movies"</string>
+    <string name="u_txt">(U)</string>
+    <string name="a_txt">(A)</string>
+
 
 </resources>
