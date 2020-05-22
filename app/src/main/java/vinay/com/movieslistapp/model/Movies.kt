@@ -76,9 +76,9 @@ data class Results(
     }
 }
 
-
 data class Data(val results: List<Results>,
                 val page: Integer,
                 val total_results: Integer,
                 val dates: Dates,
                 val total_pages: Integer)
+

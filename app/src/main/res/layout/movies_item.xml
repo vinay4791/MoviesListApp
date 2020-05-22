@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="movie"
             type="vinay.com.movieslistapp.model.Results" />
@@ -47,7 +48,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginBottom="12dp"
-                android:text="@{movie.original_title}"
+                android:text='@{movie.original_language != null ? movie.original_language : @string/null_string}'
                 android:textColor="@color/movies_descrition_textcolor"
                 android:textSize="@dimen/small_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -61,6 +62,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginBottom="12dp"
+                android:text='@{movie.release_date != null ? movie.release_date : @string/null_string}'
                 android:textColor="@color/movies_descrition_textcolor"
                 android:textSize="@dimen/small_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +78,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="24dp"
-                android:text="@{movie.title}"
+                android:text='@{movie.title != null ? movie.title : @string/null_string}'
                 android:textColor="@color/movies_text_color"
                 android:textSize="@dimen/large_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/source_tv"

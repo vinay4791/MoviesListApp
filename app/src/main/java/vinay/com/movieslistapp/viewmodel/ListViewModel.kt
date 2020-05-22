@@ -41,10 +41,10 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getState(): LiveData<State> = Transformations.switchMap<MoviesDataSource,
-            State>(moviesDataSourceFactory.newsDataSourceLiveData, MoviesDataSource::state)
+            State>(moviesDataSourceFactory.moviesDataSourceLiveData, MoviesDataSource::state)
 
     fun retry() {
-        moviesDataSourceFactory.newsDataSourceLiveData.value?.retry()
+        moviesDataSourceFactory.moviesDataSourceLiveData.value?.retry()
     }
 
     fun listIsEmpty(): Boolean {

@@ -8,11 +8,11 @@ class MoviesDataSourceFactory(
         private val compositeDisposable: CompositeDisposable,
         private val apiService: ApiService) : DataSource.Factory<Int, Results>() {
 
-    val newsDataSourceLiveData = MutableLiveData<MoviesDataSource>()
+    val moviesDataSourceLiveData = MutableLiveData<MoviesDataSource>()
 
     override fun create(): DataSource<Int, Results> {
-        val newsDataSource = MoviesDataSource(apiService, compositeDisposable)
-        newsDataSourceLiveData.postValue(newsDataSource)
-        return newsDataSource
+        val moviesDataSource = MoviesDataSource(apiService, compositeDisposable)
+        moviesDataSourceLiveData.postValue(moviesDataSource)
+        return moviesDataSource
     }
 }

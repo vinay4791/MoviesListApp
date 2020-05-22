@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 
 import vinay.com.movieslistapp.R
@@ -28,6 +29,9 @@ class DetailFragment : Fragment() {
         arguments?.let {
             movie = DetailFragmentArgs.fromBundle(it).movieDetail
         }
+
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = movie?.title
+
         dataBinding.movie = movie
     }
 }

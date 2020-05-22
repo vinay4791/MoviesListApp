@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -13,14 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
             android:id="@+id/news_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:src="@drawable/ic_launcher_background"
             android:imageUrl='@{movie.poster_path != null ? movie.poster_path : @string/null_url_blank_string}'
-            android:scaleType="fitCenter" />
+            android:scaleType="fitXY"
+            tools:src="@drawable/ic_launcher_background" />
 
         <View
             android:layout_width="match_parent"
@@ -31,17 +30,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginStart="@dimen/new_details_side_spacing"
-            android:layout_marginLeft="@dimen/new_details_side_spacing"
-            android:layout_marginEnd="@dimen/new_details_side_spacing"
-            android:layout_marginRight="@dimen/new_details_side_spacing"
-            android:layout_marginBottom="@dimen/new_details_side_spacing">
+            android:layout_marginStart="@dimen/movie_details_side_spacing"
+            android:layout_marginLeft="@dimen/movie_details_side_spacing"
+            android:layout_marginEnd="@dimen/movie_details_side_spacing"
+            android:layout_marginRight="@dimen/movie_details_side_spacing"
+            android:layout_marginBottom="@dimen/movie_details_side_spacing">
 
             <TextView
                 android:id="@+id/description_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{movie.overview}"
+                android:text='@{movie.overview != null ? movie.overview : @string/null_string}'
                 android:textColor="@color/movies_descrition_textcolor"
                 android:textSize="@dimen/medium_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -54,10 +53,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{movie.title}"
+                android:text='@{movie.popularity != null ? "Popularity - " + movie.popularity : @string/null_string}'
                 android:textColor="@color/movies_text_color"
                 android:textSize="@dimen/large_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/description_tv"
+                app:layout_constraintEnd_toStartOf="@+id/date_tv"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="CNN" />
 
@@ -66,7 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{movie.release_date}"
+                android:text='@{movie.release_date != null ? movie.release_date : @string/null_string}'
                 android:textColor="@color/movies_text_color"
                 android:textSize="@dimen/large_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/description_tv"
@@ -77,8 +77,8 @@
                 android:id="@+id/movie_details_headline_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/new_details_headlines_bottom_spacing"
-                android:text="@{movie.title}"
+                android:layout_marginBottom="@dimen/movie_details_headlines_bottom_spacing"
+                android:text='@{movie.title != null ? movie.title : @string/null_string}'
                 android:textColor="@color/movies_title_white"
                 android:textSize="@dimen/extra_large_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/source_tv"
