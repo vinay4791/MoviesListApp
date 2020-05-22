@@ -9,12 +9,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import vinay.com.movieslistapp.model.ApiInterface
 import vinay.com.movieslistapp.model.ApiService
+import vinay.com.movieslistapp.util.Constants.Companion.BASE_URL
 import java.util.concurrent.TimeUnit
 
 @Module
 class ApiModule {
-
-    private val BASE_URL = "https://api.themoviedb.org/3/"
 
     @Provides
     fun provideOkHTTPClient(): OkHttpClient {

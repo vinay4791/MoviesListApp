@@ -6,13 +6,13 @@ import javax.inject.Inject
 
 class ApiService {
     @Inject
-    lateinit var api : ApiInterface
+    lateinit var api: ApiInterface
 
-    init{
+    init {
         DaggerApiComponent.create().inject(this)
     }
 
-    fun getMovies(): Single<Data> {
-        return api.getMovies()
+    fun getMovies(api_key: String, language: String, page: String): Single<Data> {
+        return api.getMovies(api_key, language, page)
     }
 }

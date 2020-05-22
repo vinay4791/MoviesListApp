@@ -13,11 +13,11 @@ interface ArticleDao {
     @Query("SELECT * FROM movie_table")
     fun fetchAllTasks(): LiveData<List<Results>>
 
-    @Query("SELECT * FROM movie_table WHERE title =:title")
+    /*@Query("SELECT * FROM movie_table WHERE id =:title")
     fun fetchArticle(title : String): LiveData<Results>
 
     @Query("SELECT * FROM movie_table WHERE title =:title")
-    fun fetchArticleData(title : String): Results
+    fun fetchArticleData(title : String): Results*/
 
     @Update
     fun updateArticle(article: Results)
