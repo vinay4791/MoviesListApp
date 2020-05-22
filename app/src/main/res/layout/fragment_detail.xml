@@ -30,7 +30,8 @@
             android:id="@+id/news_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:imageUrl="@{movie.backdrop_path}"
+            tools:src="@drawable/ic_launcher_background"
+            android:imageUrl="@{movie.poster_path}"
             android:scaleType="fitCenter" />
 
         <View

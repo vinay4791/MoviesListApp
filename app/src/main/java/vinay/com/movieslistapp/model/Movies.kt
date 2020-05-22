@@ -2,18 +2,16 @@ package vinay.com.movieslistapp.model
 
 import android.os.Parcel
 import android.os.Parcelable
-
-data class ApiKey(
-        val request_token: String?,
-        val expires_at: String?,
-        val success: Boolean?
-)
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 data class Dates(
         val maximum: String?,
         val minimum: String?
 )
 
+@Entity(tableName = "movie_table")
 data class Results(
         val popularity: Double?,
         val vote_count: Integer?,
@@ -25,7 +23,7 @@ data class Results(
         val original_language: String?,
         val original_title: String?,
         val genre_ids: List<Integer>?,
-        val title: String?,
+        @PrimaryKey @ColumnInfo val title: String?,
         val vote_average: Double?,
         val overview: String?,
         val release_date: String?

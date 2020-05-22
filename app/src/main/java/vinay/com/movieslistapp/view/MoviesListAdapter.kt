@@ -1,6 +1,5 @@
 package vinay.com.movieslistapp.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -37,7 +36,4 @@ class MovieListAdapter (
     }
 
     class MoviesViewHolder(var view: MoviesItemBinding) : RecyclerView.ViewHolder(view.root)
-
-    //https://image.tmdb.org/t/p/w780
-    //https://image.tmdb.org/t/p/w500/
 }

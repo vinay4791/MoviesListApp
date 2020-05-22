@@ -17,15 +17,16 @@ fun getProgressDrawable(context: Context): CircularProgressDrawable {
 }
 
 fun ImageView.loadImage(uri: String?, progressDrawable: CircularProgressDrawable) {
-    val options = RequestOptions.placeholderOf(progressDrawable).error(R.mipmap.ic_launcher)
-
-    Glide.with(context)
-            .setDefaultRequestOptions(options)
-            .load(uri)
+    val requestOptions = RequestOptions().fitCenter()
+    Glide.with(context).load(uri).apply(requestOptions)
             .into(this)
 }
 
 @BindingAdapter("android:imageUrl")
 fun loadImage(view: ImageView, url: String) {
     view.loadImage("https://image.tmdb.org/t/p/w780" +url, getProgressDrawable(view.context))
+
+   // https://image.tmdb.org/t/p/w1920_and_h800_multi_faces
+    //https://image.tmdb.org/t/p/w780
+    //https://image.tmdb.org/t/p/w500/
 }
