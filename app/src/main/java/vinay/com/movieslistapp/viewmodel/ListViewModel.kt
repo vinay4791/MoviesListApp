@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import io.reactivex.disposables.CompositeDisposable
@@ -23,13 +24,16 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
     private val pageSize = 5
 
     @Inject
-    lateinit var db : MovieDb
+    lateinit var db: MovieDb
 
     @Inject
     lateinit var apiService: ApiService
 
     @Inject
-    lateinit var app : Application
+    lateinit var app: Application
+
+    val moviesBoundaryCallback: MoviesBoundaryCallback
+    val dataSourceFactory : DataSource.Factory<Int, Results>
 
     init {
         DaggerViewModelComponent
@@ -42,23 +46,15 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
                 .setEnablePlaceholders(false)
                 .build()
 
-        resultData = initializedPagedListBuilder(config).build()
+        moviesBoundaryCallback = MoviesBoundaryCallback(db, apiService, compositeDisposable)
+        dataSourceFactory = db.moviesDao().getPagedMovies()
+
+        resultData = initializedPagedListBuilder(config, moviesBoundaryCallback,dataSourceFactory).build()
     }
 
-    /*fun getState(): LiveData<State> = Transformations.switchMap<MoviesDataSource, State>(moviesDataSourceFactory.moviesDataSourceLiveData, MoviesDataSource::state)
-
-    fun retry() {
-        db.moviesDao().getPagedMovies().value?.retry()
-    }*/
-
-    fun listIsEmpty(): Boolean {
-        return resultData.value?.isEmpty() ?: true
-    }
-
-    private fun initializedPagedListBuilder(config: PagedList.Config):
-            LivePagedListBuilder<Int, Results> {
-        val livePageListBuilder = LivePagedListBuilder<Int, Results>(db.moviesDao().getPagedMovies(),config)
-        livePageListBuilder.setBoundaryCallback(MoviesBoundaryCallback(db,apiService,compositeDisposable))
+    private fun initializedPagedListBuilder(config: PagedList.Config, moviesBoundaryCallback: MoviesBoundaryCallback, dataSourceFactory :  DataSource.Factory<Int, Results>): LivePagedListBuilder<Int, Results> {
+        val livePageListBuilder = LivePagedListBuilder<Int, Results>(dataSourceFactory, config)
+        livePageListBuilder.setBoundaryCallback(moviesBoundaryCallback)
         return livePageListBuilder
     }
 

@@ -50,7 +50,6 @@ class ListFragment : Fragment() {
     }
 
     /*private fun initState() {
-        list_error.setOnClickListener { listViewModel.retry() }
         listViewModel.getState().observe(this, Observer { state ->
             list_progress_bar.visibility = if (listViewModel.listIsEmpty() && state == State.LOADING) View.VISIBLE else View.GONE
             list_error.visibility = if (listViewModel.listIsEmpty() && state == State.ERROR) View.VISIBLE else View.GONE
