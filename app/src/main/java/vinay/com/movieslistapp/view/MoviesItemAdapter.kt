@@ -27,8 +27,6 @@ class MoviesItemAdapter() : PagedListAdapter<Results, RecyclerView.ViewHolder>(M
         }  else{
             ListFooterViewHolder.create(parent)
         }
-
-
     }
 
     companion object {

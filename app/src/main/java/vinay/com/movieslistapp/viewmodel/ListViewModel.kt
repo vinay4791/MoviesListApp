@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import io.reactivex.disposables.CompositeDisposable
 import vinay.com.movieslistapp.model.*
+import vinay.com.movieslistapp.util.State
 import vinay.com.newsapidemoapp.db.MovieDb
 import vinay.com.vinaydemoproject.di.AppModule
 import vinay.com.vinaydemoproject.di.DaggerViewModelComponent
@@ -19,6 +21,9 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
     var resultData: LiveData<PagedList<Results>>
     private val compositeDisposable = CompositeDisposable()
     private val pageSize = 5
+
+    @Inject
+    lateinit var db : MovieDb
 
     @Inject
     lateinit var apiService: ApiService
@@ -40,11 +45,10 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         resultData = initializedPagedListBuilder(config).build()
     }
 
-    /*fun getState(): LiveData<State> = Transformations.switchMap<MoviesDataSource,
-            State>(moviesDataSourceFactory.moviesDataSourceLiveData, MoviesDataSource::state)
+    /*fun getState(): LiveData<State> = Transformations.switchMap<MoviesDataSource, State>(moviesDataSourceFactory.moviesDataSourceLiveData, MoviesDataSource::state)
 
     fun retry() {
-        moviesDataSourceFactory.moviesDataSourceLiveData.value?.retry()
+        db.moviesDao().getPagedMovies().value?.retry()
     }*/
 
     fun listIsEmpty(): Boolean {
@@ -53,11 +57,8 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun initializedPagedListBuilder(config: PagedList.Config):
             LivePagedListBuilder<Int, Results> {
-
-        val database = MovieDb.create(app)
-        val livePageListBuilder = LivePagedListBuilder<Int, Results>(
-                database.moviesDao().getPagedMovies(),config)
-        livePageListBuilder.setBoundaryCallback(MoviesBoundaryCallback(database,apiService,compositeDisposable))
+        val livePageListBuilder = LivePagedListBuilder<Int, Results>(db.moviesDao().getPagedMovies(),config)
+        livePageListBuilder.setBoundaryCallback(MoviesBoundaryCallback(db,apiService,compositeDisposable))
         return livePageListBuilder
     }
 
