@@ -58,17 +58,16 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         return livePageListBuilder
     }
 
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
-    }
-
     fun getState(): MutableLiveData<State> {
         return moviesBoundaryCallback.state
     }
 
     fun listIsEmpty(): Boolean {
         return resultData.value.isNullOrEmpty()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
 }
