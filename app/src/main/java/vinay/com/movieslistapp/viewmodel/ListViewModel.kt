@@ -33,7 +33,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
     lateinit var app: Application
 
     val moviesBoundaryCallback: MoviesBoundaryCallback
-    val dataSourceFactory : DataSource.Factory<Int, Results>
+    val dataSourceFactory: DataSource.Factory<Int, Results>
 
     init {
         DaggerViewModelComponent
@@ -49,17 +49,26 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         moviesBoundaryCallback = MoviesBoundaryCallback(db, apiService, compositeDisposable)
         dataSourceFactory = db.moviesDao().getPagedMovies()
 
-        resultData = initializedPagedListBuilder(config, moviesBoundaryCallback,dataSourceFactory).build()
+        resultData = initializedPagedListBuilder(config, moviesBoundaryCallback, dataSourceFactory).build()
     }
 
-    private fun initializedPagedListBuilder(config: PagedList.Config, moviesBoundaryCallback: MoviesBoundaryCallback, dataSourceFactory :  DataSource.Factory<Int, Results>): LivePagedListBuilder<Int, Results> {
+    private fun initializedPagedListBuilder(config: PagedList.Config, moviesBoundaryCallback: MoviesBoundaryCallback, dataSourceFactory: DataSource.Factory<Int, Results>): LivePagedListBuilder<Int, Results> {
         val livePageListBuilder = LivePagedListBuilder<Int, Results>(dataSourceFactory, config)
         livePageListBuilder.setBoundaryCallback(moviesBoundaryCallback)
         return livePageListBuilder
     }
 
+
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
+    }
+
+    fun getState(): MutableLiveData<State> {
+        return moviesBoundaryCallback.state
+    }
+
+    fun listIsEmpty(): Boolean {
+        return resultData.value.isNullOrEmpty()
     }
 }

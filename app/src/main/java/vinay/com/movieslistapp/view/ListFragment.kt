@@ -35,9 +35,8 @@ class ListFragment : Fragment() {
         listViewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = activity?.getString(R.string.tmdb_movies_txt)
 
-
         initAdapter()
-       // initState()
+        initState()
     }
 
     private fun initAdapter() {
@@ -49,7 +48,7 @@ class ListFragment : Fragment() {
         })
     }
 
-    /*private fun initState() {
+    private fun initState() {
         listViewModel.getState().observe(this, Observer { state ->
             list_progress_bar.visibility = if (listViewModel.listIsEmpty() && state == State.LOADING) View.VISIBLE else View.GONE
             list_error.visibility = if (listViewModel.listIsEmpty() && state == State.ERROR) View.VISIBLE else View.GONE
@@ -57,7 +56,7 @@ class ListFragment : Fragment() {
                 moviesItemAdapter.setState(state ?: State.DONE)
             }
         })
-    }*/
+    }
 
 }
 
