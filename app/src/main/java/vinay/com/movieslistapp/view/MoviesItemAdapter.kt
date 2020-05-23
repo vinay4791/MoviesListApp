@@ -41,6 +41,9 @@ class MoviesItemAdapter() : PagedListAdapter<Results, RecyclerView.ViewHolder>(M
         }
     }
 
+    /*
+    Function to return list item count. Add 1 to the count if hasFooter() returns true
+     */
     override fun getItemCount(): Int {
         return super.getItemCount() + if (hasFooter()) 1 else 0
     }
@@ -49,6 +52,9 @@ class MoviesItemAdapter() : PagedListAdapter<Results, RecyclerView.ViewHolder>(M
         return if (position < super.getItemCount()) DATA_VIEW_TYPE else FOOTER_VIEW_TYPE
     }
 
+    /*
+    Function to check if the recycler view items has a footer. Returns true if netwrok state is in LOADING or ERROR
+     */
     private fun hasFooter(): Boolean {
         return super.getItemCount() != 0 && (state == State.LOADING || state == State.ERROR)
     }
