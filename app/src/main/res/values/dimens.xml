@@ -7,6 +7,4 @@
 
     <dimen name="movie_details_side_spacing">24dp</dimen>
     <dimen name="movie_details_headlines_bottom_spacing">64dp</dimen>
-
-    <dimen name="back_arrow_margin">42dp</dimen>
 </resources>
