@@ -10,6 +10,6 @@
     <string name="tmdb_movies_txt">TMDB Movies"</string>
     <string name="u_txt">(U)</string>
     <string name="a_txt">(A)</string>
-    <string name="loading_error_txt">An error occurred while loading data !!!</string>
+    <string name="loading_error_txt">An error occurred while loading data !!! \n Please check your network connectivity.</string>
 
 </resources>
