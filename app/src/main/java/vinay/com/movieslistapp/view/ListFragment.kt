@@ -38,6 +38,9 @@ class ListFragment : Fragment() {
         initState()
     }
 
+    /*
+    Function for initializing the adapter
+     */
     private fun initAdapter() {
         moviesItemAdapter = MoviesItemAdapter()
         moviesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
@@ -47,6 +50,9 @@ class ListFragment : Fragment() {
         })
     }
 
+    /*
+    Function for initializing the state of the view
+     */
     private fun initState() {
         listViewModel.getState().observe(this, Observer { state ->
             list_progress_bar.visibility = if (listViewModel.listIsEmpty() && state == State.LOADING) View.VISIBLE else View.GONE

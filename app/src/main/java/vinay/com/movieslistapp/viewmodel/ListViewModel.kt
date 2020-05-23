@@ -58,10 +58,16 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         return livePageListBuilder
     }
 
+    /*
+    Function for returning network state
+     */
     fun getState(): MutableLiveData<State> {
         return moviesBoundaryCallback.state
     }
 
+    /*
+    Function returns a boolean if the PagedList is Empty
+     */
     fun listIsEmpty(): Boolean {
         return resultData.value.isNullOrEmpty()
     }
