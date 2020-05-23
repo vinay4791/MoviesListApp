@@ -11,7 +11,7 @@ import vinay.com.movieslistapp.databinding.MoviesItemBinding
 import vinay.com.movieslistapp.model.Results
 import vinay.com.movieslistapp.util.State
 
-class MoviesItemAdapter(private val retry: () -> Unit) : PagedListAdapter<Results, RecyclerView.ViewHolder>(MoviesDiffCallback) {
+class MoviesItemAdapter() : PagedListAdapter<Results, RecyclerView.ViewHolder>(MoviesDiffCallback) {
 
     private var state = State.LOADING
 
@@ -25,7 +25,7 @@ class MoviesItemAdapter(private val retry: () -> Unit) : PagedListAdapter<Result
         return if (viewType == DATA_VIEW_TYPE) {
             MoviesViewHolder(view)
         }  else{
-            ListFooterViewHolder.create(retry, parent)
+            ListFooterViewHolder.create(parent)
         }
 
 

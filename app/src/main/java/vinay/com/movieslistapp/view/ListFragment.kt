@@ -37,11 +37,11 @@ class ListFragment : Fragment() {
 
 
         initAdapter()
-        initState()
+       // initState()
     }
 
     private fun initAdapter() {
-        moviesItemAdapter = MoviesItemAdapter { listViewModel.retry() }
+        moviesItemAdapter = MoviesItemAdapter()
         moviesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         moviesList.adapter = moviesItemAdapter
         listViewModel.resultData.observe(this, Observer {
@@ -49,7 +49,7 @@ class ListFragment : Fragment() {
         })
     }
 
-    private fun initState() {
+    /*private fun initState() {
         list_error.setOnClickListener { listViewModel.retry() }
         listViewModel.getState().observe(this, Observer { state ->
             list_progress_bar.visibility = if (listViewModel.listIsEmpty() && state == State.LOADING) View.VISIBLE else View.GONE
@@ -58,7 +58,7 @@ class ListFragment : Fragment() {
                 moviesItemAdapter.setState(state ?: State.DONE)
             }
         })
-    }
+    }*/
 
 }
 
