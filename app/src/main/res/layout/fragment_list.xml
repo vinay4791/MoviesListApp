@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".view.ListFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/moviesList"
         android:layout_width="0dp"
@@ -30,8 +29,10 @@
         android:id="@+id/list_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="An error occurred while loading data"
+        android:text="@string/loading_error_txt"
         android:visibility="gone"
+        android:textColor="@color/movies_title_white"
+        android:textSize="@dimen/large_text_size"
         app:layout_constraintBottom_toBottomOf="@+id/moviesList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

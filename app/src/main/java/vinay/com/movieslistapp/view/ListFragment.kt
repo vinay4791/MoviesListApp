@@ -15,7 +15,6 @@ import vinay.com.movieslistapp.R
 import vinay.com.movieslistapp.util.State
 import vinay.com.movieslistapp.viewmodel.ListViewModel
 
-
 class ListFragment : Fragment() {
 
     private lateinit var listViewModel: ListViewModel

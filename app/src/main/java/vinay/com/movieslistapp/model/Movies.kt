@@ -23,8 +23,7 @@ data class Results(
         val backdrop_path: String?,
         val original_language: String?,
         val original_title: String?,
-        /*val genre_ids: List<Integer>?,*/
-         val title: String?,
+        val title: String?,
         val vote_average: Double?,
         val overview: String?,
         val release_date: String?

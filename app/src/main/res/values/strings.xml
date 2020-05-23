@@ -2,11 +2,14 @@
     <string name="app_name">MoviesListApp</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--  Strings defined to avoid null pointer exceptions during data binding  -->
     <string name="null_url_blank_string">null_url_blank_string</string>
     <string name="null_string">Undefined</string>
+
+    <!-- Util Texts   -->
     <string name="tmdb_movies_txt">TMDB Movies"</string>
     <string name="u_txt">(U)</string>
     <string name="a_txt">(A)</string>
-
+    <string name="loading_error_txt">An error occurred while loading data !!!</string>
 
 </resources>

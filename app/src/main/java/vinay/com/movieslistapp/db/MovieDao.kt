@@ -1,6 +1,5 @@
 package vinay.com.newsapidemoapp.db
 
-import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 import vinay.com.movieslistapp.model.Results
