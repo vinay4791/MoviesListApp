@@ -1,6 +1,6 @@
 # MoviesListApp
 
-## > Tools Used :
+##  Tools Used :
 - Used Room Persistence Library for offline storage of Data - Room
 - MVVM architecture is used for the project with Android ViewModel and LiveData.
 - Dependency injection framework Dagger is used
