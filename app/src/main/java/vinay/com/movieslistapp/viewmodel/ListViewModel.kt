@@ -8,14 +8,14 @@ import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import io.reactivex.disposables.CompositeDisposable
+import vinay.com.movieslistapp.db.MovieDb
+import vinay.com.movieslistapp.di.AppModule
+import vinay.com.movieslistapp.di.DaggerViewModelComponent
 import vinay.com.movieslistapp.model.ApiService
 import vinay.com.movieslistapp.model.MoviesBoundaryCallback
 import vinay.com.movieslistapp.model.Results
 import vinay.com.movieslistapp.util.Constants.Companion.PAGE_SIZE_COUNT
 import vinay.com.movieslistapp.util.State
-import vinay.com.newsapidemoapp.db.MovieDb
-import vinay.com.vinaydemoproject.di.AppModule
-import vinay.com.vinaydemoproject.di.DaggerViewModelComponent
 import javax.inject.Inject
 
 class ListViewModel(application: Application) : AndroidViewModel(application) {

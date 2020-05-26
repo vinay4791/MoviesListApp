@@ -1,4 +1,4 @@
-package vinay.com.vinaydemoproject.di
+package vinay.com.movieslistapp.di
 
 import dagger.Module
 import dagger.Provides

@@ -1,7 +1,7 @@
 package vinay.com.movieslistapp.model
 
 import io.reactivex.Single
-import vinay.com.vinaydemoproject.di.DaggerApiComponent
+import vinay.com.movieslistapp.di.DaggerApiComponent
 import javax.inject.Inject
 
 class ApiService {

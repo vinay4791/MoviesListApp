@@ -6,11 +6,11 @@ import androidx.paging.PagedList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import vinay.com.movieslistapp.db.MovieDb
 import vinay.com.movieslistapp.util.Constants.Companion.API_KEY
 import vinay.com.movieslistapp.util.Constants.Companion.DEFAULT_LANGUAGE
 import vinay.com.movieslistapp.util.Constants.Companion.INITIAL_PAGE
 import vinay.com.movieslistapp.util.State
-import vinay.com.newsapidemoapp.db.MovieDb
 import java.util.concurrent.Executors
 
 class MoviesBoundaryCallback(private val db: MovieDb,

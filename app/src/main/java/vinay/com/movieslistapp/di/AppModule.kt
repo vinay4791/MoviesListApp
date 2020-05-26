@@ -1,9 +1,9 @@
-package vinay.com.vinaydemoproject.di
+package vinay.com.movieslistapp.di
 
 import android.app.Application
 import dagger.Module
 import dagger.Provides
-import vinay.com.newsapidemoapp.db.MovieDb
+import vinay.com.movieslistapp.db.MovieDb
 
 @Module
 class AppModule(val app: Application) {
