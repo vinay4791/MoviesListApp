@@ -1,4 +1,4 @@
-package vinay.com.newsapidemoapp.db
+package vinay.com.movieslistapp.db
 
 import androidx.paging.DataSource
 import androidx.room.*

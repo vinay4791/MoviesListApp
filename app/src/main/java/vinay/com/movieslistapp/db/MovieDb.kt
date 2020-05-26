@@ -1,4 +1,4 @@
-package vinay.com.newsapidemoapp.db
+package vinay.com.movieslistapp.db
 
 import android.content.Context
 import androidx.room.Database
