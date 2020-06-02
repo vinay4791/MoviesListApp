@@ -31,7 +31,7 @@ class ApiModule {
     }
 
     @Provides
-    fun provideAnimalApiService(): ApiService {
+    fun provideApiService(): ApiService {
         return ApiService()
     }
 }

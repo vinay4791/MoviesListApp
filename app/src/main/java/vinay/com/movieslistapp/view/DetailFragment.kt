@@ -1,10 +1,12 @@
 package vinay.com.movieslistapp.view
 
+import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 
@@ -26,6 +28,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         arguments?.let {
             movie = DetailFragmentArgs.fromBundle(it).movieDetail
         }
@@ -34,4 +37,6 @@ class DetailFragment : Fragment() {
 
         dataBinding.movie = movie
     }
+
+
 }
