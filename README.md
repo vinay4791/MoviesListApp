@@ -9,4 +9,4 @@
 - Android Navigation Library is used for designing fragments and communicating between them.
 - Android Data Binding Library
 - Android Paging Library is used for pagination of lists.
-- Retrofit is used for Api calls with Gson Converter Factory.
+- Gson Converter Factory is used for Json serialization and de-serialization.
